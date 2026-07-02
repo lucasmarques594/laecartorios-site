@@ -1,16 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { HeaderStars } from "./header-stars";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -20,6 +22,10 @@ export function Header() {
   }, []);
 
   const dark = !scrolled;
+
+  // Verifica se o link está ativo (página atual)
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <header
@@ -57,18 +63,33 @@ export function Header() {
 
         {/* Nav centralizado */}
         <nav className="hidden items-center gap-9 justify-self-center lg:flex">
-          {siteConfig.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="nav-link text-[15px] font-medium text-lae-ink transition-colors duration-500 hover:text-lae-amber-deep"
-              {...("external" in item && item.external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {siteConfig.nav.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "nav-link relative text-[15px] font-medium transition-colors duration-500",
+                  active
+                    ? "text-lae-amber-deep"
+                    : "text-lae-ink hover:text-lae-amber-deep",
+                )}
+                {...("external" in item && item.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                {item.label}
+                {/* Linha embaixo do item ativo */}
+                <span
+                  className={cn(
+                    "absolute -bottom-1.5 left-0 h-0.5 rounded-full bg-lae-amber-deep transition-all duration-300",
+                    active ? "w-full" : "w-0",
+                  )}
+                />
+              </Link>
+            );
+          })}
         </nav>
 
         {/* CTA (direita) */}
@@ -105,19 +126,27 @@ export function Header() {
         )}
       >
         <nav className="flex flex-col gap-1 px-6 py-4">
-          {siteConfig.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-3 text-base font-medium text-lae-ink transition-colors hover:bg-lae-amber/10 hover:text-lae-amber-deep"
-              {...("external" in item && item.external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {siteConfig.nav.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "rounded-md px-3 py-3 text-base font-medium transition-colors",
+                  active
+                    ? "border-l-2 border-lae-amber-deep bg-lae-amber/10 text-lae-amber-deep"
+                    : "text-lae-ink hover:bg-lae-amber/10 hover:text-lae-amber-deep",
+                )}
+                {...("external" in item && item.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <a
             href={siteConfig.contact.whatsappLink}
             target="_blank"
