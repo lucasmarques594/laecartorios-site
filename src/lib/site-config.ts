@@ -34,7 +34,7 @@ export const siteConfig = {
       { label: "Quem somos", href: "/quem-somos" },
       { label: "Serviços", href: "/servicos" },
       { label: "Blog da LAE", href: "/blog" },
-      { label: "Parceiros LAE", href: "/parceiros" },
+      { label: "Parceiros LAE", href: "/servicos#Parceiros" },
       { label: "Trabalhe Conosco", href: "/trabalhe-conosco" },
     ] as NavItem[],
     materiais: [
