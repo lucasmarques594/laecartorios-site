@@ -134,7 +134,7 @@ export default function ServicosPage() {
         </Reveal>
 
         {/* ===== Parceiros ===== */}
-        <section className="mt-24">
+        <section id="Parceiros" className="mt-24">
           <Reveal>
             <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-lae-ink sm:text-4xl">
               Parceiros
