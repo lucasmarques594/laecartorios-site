@@ -20,9 +20,9 @@ export const siteConfig = {
 
   contact: {
     address: "Rua Solimões, 849 — Bairro Mercês, Curitiba/PR - Brasil",
-    phoneCommercial: "(41) 3040-7171",
-    phoneWhatsapp: "(41) 99292-2323",
-    whatsappLink: "https://wa.me/5541992922323",
+    phoneCommercial: "(41) 99254-2547",
+    phoneWhatsapp: "(41) 99254-2547 ",
+    whatsappLink: "https://wa.me/5541992542547",
     email: "comercial@laecartorios.com",
     instagram: "@laecartorios",
     instagramLink: "https://instagram.com/laecartorios",
