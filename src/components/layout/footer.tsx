@@ -9,6 +9,7 @@ import {
   Mail,
   MapPin,
   ChevronDown,
+  MessageCircle,
 } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { buttonVariants } from "../ui/button";
@@ -246,8 +247,9 @@ export function Footer() {
                       href={siteConfig.contact.whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition-colors hover:text-lae-amber-deep"
+                      className="flex items-center gap-2 text-sm text-lae-stone transition-colors hover:text-lae-amber-deep"
                     >
+                      <MessageCircle className="size-4 shrink-0 text-lae-amber-deep" />
                       {siteConfig.contact.phoneWhatsapp}
                     </a>
                   </li>
