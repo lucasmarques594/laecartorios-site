@@ -8,55 +8,49 @@ import {
   Phone,
   Mail,
   MapPin,
+  MessageCircle,
   ChevronDown,
 } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { buttonVariants } from "../ui/button";
-import { cn } from "@/lib/utils";
+
+const GOLD = "#e8b84a";
 
 export function Footer() {
   return (
-    <footer className="border-t border-lae-ink/10 bg-lae-amber/25">
+    <footer style={{ backgroundColor: GOLD }} className="text-lae-ink">
       {/* ===================== MOBILE ===================== */}
       <div className="lg:hidden">
-        <div className="mx-auto max-w-md px-6 py-10">
-          {/* Brasão */}
+        <div className="mx-auto max-w-md px-6 py-4">
           <div className="flex justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/imagem/logolae3.png"
-              alt="LAE Cartórios"
-              className="h-20 w-auto"
-            />
+            <img src="/imagem/logolae3.png" alt="LAE Cartórios" className="h-32 w-auto" />
           </div>
 
-          {/* Ações rápidas: ligar + email */}
           <div className="mt-8 grid grid-cols-2 gap-3">
             <a
               href={`tel:${siteConfig.contact.phoneWhatsapp.replace(/\D/g, "")}`}
-              className={buttonVariants({ variant: "gold" })}
+              className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-lae-ink/20 bg-white/20 px-4 text-sm font-medium text-lae-ink transition-all active:scale-[0.98]"
             >
               <Phone className="size-4" />
               Ligar
             </a>
             <a
               href={`mailto:${siteConfig.contact.email}`}
-              className={buttonVariants({ variant: "gold" })}
+              className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-lae-ink/20 bg-white/20 px-4 text-sm font-medium text-lae-ink transition-all active:scale-[0.98]"
             >
               <Mail className="size-4" />
               E-mail
             </a>
           </div>
 
-          {/* Accordions de links */}
-          <div className="mt-8 divide-y divide-lae-ink/10 border-y border-lae-ink/10">
+          <div className="mt-8 divide-y divide-lae-ink/15 border-y border-lae-ink/15">
             <AccordionSection title="Principais Links">
               <ul className="pb-2">
                 {siteConfig.footer.principalLinks.map((l) => (
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="flex min-h-11 items-center text-[15px] text-lae-stone transition-colors active:text-lae-ink"
+                      className="flex min-h-11 items-center text-[15px] text-lae-ink/80 transition-colors active:text-lae-ink"
                       {...("external" in l && l.external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}
@@ -74,7 +68,7 @@ export function Footer() {
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="flex min-h-11 items-center text-[15px] text-lae-stone transition-colors active:text-lae-ink"
+                      className="flex min-h-11 items-center text-[15px] text-lae-ink/80 transition-colors active:text-lae-ink"
                     >
                       {l.label}
                     </Link>
@@ -84,48 +78,35 @@ export function Footer() {
             </AccordionSection>
 
             <AccordionSection title="Contato e endereço">
-              <ul className="space-y-1 pb-3 text-[15px] text-lae-stone">
+              <ul className="space-y-1 pb-3 text-[15px] text-lae-ink/80">
                 <li className="flex items-start gap-2.5 py-1.5">
-                  <Phone className="mt-0.5 size-4 shrink-0 text-lae-amber-deep" />
+                  <Phone className="mt-0.5 size-4 shrink-0" />
                   <span>
-                    <span className="block">
-                      {siteConfig.contact.phoneCommercial}
-                    </span>
-                    <span className="text-xs text-lae-stone/70">Comercial</span>
+                    <span className="block">{siteConfig.contact.phoneCommercial}</span>
+                    <span className="text-xs text-lae-ink/60">Comercial</span>
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5 py-1.5">
-                  <MapPin className="mt-0.5 size-4 shrink-0 text-lae-amber-deep" />
-                  <a
-                    href="https://www.google.com/maps?q=Rua+Solim%C3%B5es+849+Merc%C3%AAs+Curitiba+PR"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors active:text-lae-ink"
-                  >
-                    {siteConfig.contact.address}
+                  <MessageCircle className="mt-0.5 size-4 shrink-0" />
+                  <a href={siteConfig.contact.whatsappLink} target="_blank" rel="noopener noreferrer">
+                    {siteConfig.contact.phoneWhatsapp}
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5 py-1.5">
-                  <Mail className="mt-0.5 size-4 shrink-0 text-lae-amber-deep" />
-                  <a
-                    href={`mailto:${siteConfig.contact.email}`}
-                    className="break-words transition-colors active:text-lae-ink"
-                  >
-                    {siteConfig.contact.email}
-                  </a>
+                  <MapPin className="mt-0.5 size-4 shrink-0" />
+                  <span>{siteConfig.contact.address}</span>
                 </li>
               </ul>
             </AccordionSection>
           </div>
 
-          {/* Redes sociais centralizadas */}
           <div className="mt-8 flex justify-center gap-3">
             <a
               href={siteConfig.contact.instagramLink}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className={cn(buttonVariants({ variant: "gold" }), "size-12 rounded-full p-0")}
+              className="flex size-12 items-center justify-center rounded-full border border-lae-ink/20 bg-white/20 text-lae-ink transition-all active:scale-95"
             >
               <Instagram className="size-5" />
             </a>
@@ -134,13 +115,12 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className={cn(buttonVariants({ variant: "gold" }), "size-12 rounded-full p-0")}
+              className="flex size-12 items-center justify-center rounded-full border border-lae-ink/20 bg-white/20 text-lae-ink transition-all active:scale-95"
             >
               <Linkedin className="size-5" />
             </a>
           </div>
 
-          {/* Copyright */}
           <p className="mt-8 text-center text-xs font-semibold text-lae-ink">
             © {new Date().getFullYear()} LAE Cartórios.
             <br />
@@ -149,141 +129,125 @@ export function Footer() {
         </div>
       </div>
 
-    <div className="hidden lg:block">
-        <div className="mx-auto max-w-7xl px-8 py-16">
-          <div className="grid grid-cols-[auto_1fr] gap-16 xl:gap-24">
-            {/* Coluna da marca — brasão + redes */}
-            <div className="flex flex-col items-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/imagem/logolae2.png"
-                alt="LAE Cartórios"
-                className="h-32 w-auto"
-              />
-              <div className="mt-6 flex justify-center gap-3">
-                <a
-                  href={siteConfig.contact.instagramLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className={cn(buttonVariants({ variant: "gold" }), "size-11 rounded-full p-0")}
-
-                >
-                  <Instagram className="size-5" />
-                </a>
-                <a
-                  href={siteConfig.contact.linkedinLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className={cn(buttonVariants({ variant: "gold" }), "size-11 rounded-full p-0")}
-                >
-                  <Linkedin className="size-5" />
-                </a>
-              </div>
+      {/* ===================== DESKTOP ===================== */}
+      <div className="hidden lg:block">
+        <div className="mx-auto max-w-7xl px-10 py-8">
+          <div className="grid grid-cols-[1fr_1fr_1fr_1fr_auto] gap-10">
+            <div>
+              <h3 className="mb-4 text-xl font-bold text-lae-ink">Principais Links</h3>
+              <ul className="space-y-2">
+                {siteConfig.footer.principalLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="text-sm text-lae-ink/80 transition-colors hover:text-lae-ink"
+                      {...("external" in l && l.external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
- 
-            {/* Colunas de links */}
-            <div className="grid grid-cols-4 gap-8">
-              {/* Principais Links */}
-              <div>
-                <h3 className="mb-4 text-sm font-bold text-lae-ink">
-                  Principais Links
-                </h3>
-                <ul className="space-y-2.5">
-                  {siteConfig.footer.principalLinks.map((l) => (
-                    <li key={l.href}>
-                      <Link
-                        href={l.href}
-                        className="text-sm text-lae-stone transition-colors hover:text-lae-amber-deep"
-                        {...("external" in l && l.external
-                          ? { target: "_blank", rel: "noopener noreferrer" }
-                          : {})}
-                      >
-                        {l.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
 
-              {/* Materiais */}
-              <div>
-                <h3 className="mb-4 text-sm font-bold text-lae-ink">
-                  Materiais
-                </h3>
-                <ul className="space-y-2.5">
-                  {siteConfig.footer.materiais.map((l) => (
-                    <li key={l.href}>
-                      <Link
-                        href={l.href}
-                        className="text-sm text-lae-stone transition-colors hover:text-lae-amber-deep"
-                      >
-                        {l.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Contatos */}
-              <div>
-                <h3 className="mb-4 text-sm font-bold text-lae-ink">Contatos</h3>
-                <ul className="space-y-2.5 text-sm text-lae-stone">
-                  <li className="flex items-start gap-2">
-                    <Phone className="mt-0.5 size-4 shrink-0 text-lae-amber-deep" />
-                    <div>
-                      <span className="block">
-                        {siteConfig.contact.phoneCommercial}
-                      </span>
-                      <span className="text-xs text-lae-stone/70">
-                        Comercial
-                      </span>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      href={siteConfig.contact.whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition-colors hover:text-lae-amber-deep"
-                    >
-                      {siteConfig.contact.phoneWhatsapp}
-                    </a>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Mail className="mt-0.5 size-4 shrink-0 text-lae-amber-deep" />
-                    <a
-                      href={`mailto:${siteConfig.contact.email}`}
-                      className="break-words transition-colors hover:text-lae-amber-deep"
-                    >
-                      {siteConfig.contact.email}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Endereço */}
-              <div>
-                <h3 className="mb-4 text-sm font-bold text-lae-ink">Endereço</h3>
-                <a
-                  href="https://www.google.com/maps?q=Rua+Solim%C3%B5es+849+Merc%C3%AAs+Curitiba+PR"
+            <div>
+              <h3 className="mb-4 text-xl font-bold text-lae-ink">Redes Sociais</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href={siteConfig.contact.instagramLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex text-justify items-start gap-2 text-sm text-lae-stone transition-colors hover:text-lae-amber-deep"                  
-                    >
-                    <MapPin className="mt-0.5 size-4 shrink-0 text-lae-amber-deep" />
-                    <span className="flex-1">{siteConfig.contact.address}</span>
+                    className="flex items-center gap-2 text-sm text-lae-ink/80 transition-colors hover:text-lae-ink"
+                  >
+                    <Instagram className="size-4" />
+                    {siteConfig.contact.instagram}
                   </a>
-              </div>
+                </li>
+                <li>
+                  <a
+                    href={siteConfig.contact.linkedinLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-lae-ink/80 transition-colors hover:text-lae-ink"
+                  >
+                    <Linkedin className="size-4" />
+                    Linkedin
+                  </a>
+                </li>
+              </ul>
+
+              <h3 className="mb-4 mt-6 text-xl font-bold text-lae-ink">Materiais</h3>
+              <ul className="space-y-2">
+                {siteConfig.footer.materiais.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="text-sm text-lae-ink/80 transition-colors hover:text-lae-ink"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-xl font-bold text-lae-ink">Contatos</h3>
+              <ul className="space-y-2.5 text-sm text-lae-ink/80">
+                <li className="flex items-start gap-2">
+                  <Phone className="mt-0.5 size-4 shrink-0" />
+                  <div>
+                    <span className="block">{siteConfig.contact.phoneCommercial}</span>
+                    <span className="text-xs text-lae-ink/60">Comercial</span>
+                  </div>
+                </li>
+                <li className="flex items-center gap-2">
+                  <MessageCircle className="size-4 shrink-0" />
+                  <a
+                    href={siteConfig.contact.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-lae-ink"
+                  >
+                    {siteConfig.contact.phoneWhatsapp}
+                  </a>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Mail className="mt-0.5 size-4 shrink-0" />
+                  <a
+                    href={`mailto:${siteConfig.contact.email}`}
+                    className="break-words transition-colors hover:text-lae-ink"
+                  >
+                    {siteConfig.contact.email}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-xl font-bold text-lae-ink">Endereço</h3>
+              <a
+                href="https://www.google.com/maps?q=Rua+Solim%C3%B5es+849+Merc%C3%AAs+Curitiba+PR"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 text-sm text-lae-ink/80 transition-colors hover:text-lae-ink"
+              >
+                <MapPin className="mt-0.5 size-4 shrink-0" />
+                <span className="flex-1">{siteConfig.contact.address}</span>
+              </a>
+            </div>
+
+            <div className="flex items-start justify-end">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/imagem/logolae2.png" alt="LAE Cartórios" className="h-48 w-auto" />
             </div>
           </div>
 
-          <div className="mt-14 border-t border-lae-ink/15 pt-6 text-center">
-            <p className="text-xs font-semibold text-lae-ink">
-              © {new Date().getFullYear()} LAE Cartórios. Todos os direitos
-              reservados.
-            </p>
+          <div className="mt-12 text-center">
+            <p className="text-xs font-semibold text-lae-ink">© 2026 LAE Cartórios. Todos os direitos reservados</p>
           </div>
         </div>
       </div>
@@ -308,7 +272,7 @@ function AccordionSection({
       >
         {title}
         <ChevronDown
-          className={`size-5 text-lae-stone transition-transform duration-300 ${
+          className={`size-5 text-lae-ink/70 transition-transform duration-300 ${
             open ? "rotate-180" : ""
           }`}
         />
