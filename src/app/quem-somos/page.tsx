@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const diretores = [
   {
     nome: "Diretor",
-    bio: "Evandro Oliveira é contador, CEO e cofundador da LAE Cartórios. Com mais de 30 anos de experiência em auditoria, consultoria empresarial e planejamento tributário, é referência em contabilidade para o setor extrajudicial. Sua trajetória é marcada pela integração entre estratégia, gestão e desenvolvimento de pessoas, impulsionando resultados sustentáveis e a evolução das organizações que assessora.",
+    bio: "Evandro Ferreira de Oliveira é contador, palestrante, Consultor da CNR, Master em Programação Neurolinguística, CEO e cofundador da LAE Cartórios, com mais de 30 anos de auditoria, consultoria empresarial e planejamento tributário para o Extrajudicial. Alguém que alia conhecimento técnico a uma visão estratégica de negócios. ",
     foto: "/imagem/evandro.jpeg",
   },
 ];
@@ -33,16 +33,13 @@ export default function QuemSomosPage() {
             />
             <div className="mt-6 space-y-4 text-justify text-base leading-relaxed text-lae-stone">
               <p>
-                A LAE Cartórios é uma assessoria contábil especializada no setor
-                extrajudicial brasileiro. Atendemos tabelionatos, registros civis,
-                de imóveis e de protesto em todo o país, com soluções 360° em
-                contabilidade, fiscal e administrativo.
+                Somos uma empresa voltada exclusivamente ao setor extrajudicial, unindo excelência técnica e assessoria estratégica Jurídica e Tributária as exigências e adequações próprias do setor.
               </p>
               <p>
-                Combinamos rigor técnico, otimização tributária dentro da
-                legalidade e atendimento exclusivo — sem call center, sem tickets,
-                sem retrabalho. Cada cartório fala diretamente com quem entende da
-                sua realidade.
+                Sabemos que o atual momento do extrajudicial, com tantas mudanças, inovações e exigências requer mais do que o profundo conhecimento as normas técnicas, o setor está em constante transformação e, para além da complexidade empresarial na gestão de um cartório, bem como, as especificidades próprias do setor, muitas vezes, a contabilidade generalista não compreende as nuances dos emolumentos, dos fundos de compensação, repasses e a devida formação da base de cálculo para recolhimento de tributos, haja vista as inovações trazidas pela reforma tributária. 
+              </p>
+              <p>
+                É aí que nós entramos, não somos apenas um escritório de contabilidade; somos o seu braço direito estratégico, com um grupo de profissionais com experiências especializadas na prestação de serviços que resolvem desde situações da sua folha de ponto até seu planejamento tributário.
               </p>
             </div>
           </Reveal>

@@ -80,13 +80,6 @@ export function Footer() {
             <AccordionSection title="Contato e endereço">
               <ul className="space-y-1 pb-3 text-[15px] text-lae-ink/80">
                 <li className="flex items-start gap-2.5 py-1.5">
-                  <Phone className="mt-0.5 size-4 shrink-0" />
-                  <span>
-                    <span className="block">{siteConfig.contact.phoneCommercial}</span>
-                    <span className="text-xs text-lae-ink/60">Comercial</span>
-                  </span>
-                </li>
-                <li className="flex items-start gap-2.5 py-1.5">
                   <MessageCircle className="mt-0.5 size-4 shrink-0" />
                   <a href={siteConfig.contact.whatsappLink} target="_blank" rel="noopener noreferrer">
                     {siteConfig.contact.phoneWhatsapp}
@@ -197,13 +190,6 @@ export function Footer() {
             <div>
               <h3 className="mb-4 text-xl font-bold text-lae-ink">Contatos</h3>
               <ul className="space-y-2.5 text-sm text-lae-ink/80">
-                <li className="flex items-start gap-2">
-                  <Phone className="mt-0.5 size-4 shrink-0" />
-                  <div>
-                    <span className="block">{siteConfig.contact.phoneCommercial}</span>
-                    <span className="text-xs text-lae-ink/60">Comercial</span>
-                  </div>
-                </li>
                 <li className="flex items-center gap-2">
                   <MessageCircle className="size-4 shrink-0" />
                   <a
